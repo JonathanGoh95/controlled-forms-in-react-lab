@@ -9,7 +9,7 @@ export default function Bookshelf() {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setNewBook({...newBook,[name]: value});
+        setNewBook({...newBook,[name]: value}); // Updates newBook state object
     }
 
     const handleSubmit = (event) => {
@@ -19,20 +19,25 @@ export default function Bookshelf() {
     }
 
     return(
-        <div className="bookshelfDiv">
+    <div className="bookshelfDiv">
         <div className="formDiv">
             <h3>Add a Book</h3>
             <form onSubmit={handleSubmit}>
-            <label>Title: </label>
-            <input id='title' name='title' value = {newBook.title} onChange={handleInputChange}/>
-            {console.log(newBook)}
-            {console.log(books)}
-            <label>Author: </label>
-            <input id='author' name='author' value = {newBook.author} onChange={handleInputChange}/>
-            <button type='submit'>Add Book</button>
+                <label>Title: </label>
+                <input id='title' name='title' value = {newBook.title} onChange={handleInputChange}/>
+                <label>Author: </label>
+                <input id='author' name='author' value = {newBook.author} onChange={handleInputChange}/>
+                <button type='submit'>Add Book</button>
             </form>
         </div>
-        <div className="bookCardsDiv">{/* Book cards will display here */}</div>
+        {/* Map through the books array and display each book accordingly */}
+        <div className="bookCardsDiv">{books.map((book,index)=>(
+            <div key={index} className="bookCard">
+                <h4>{book.title}</h4>
+                <p>{book.author}</p>
+            </div>
+        ))}
         </div>
+    </div>    
     )
 }

@@ -90,6 +90,8 @@ input {
 .bookCardsDiv {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   width: 90%;
   margin-top: 20px;
